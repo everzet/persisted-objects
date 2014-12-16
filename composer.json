@@ -1,0 +1,34 @@
+{
+    "name":         "everzet/persisted-objects",
+    "description":  "Overly simplistic persistance implementations for functional testing",
+    "keywords":     ["Test", "DDD", "Repository", "Persistance", "BDD"],
+    "homepage":     "https://github.com/everzet/persisted-objects",
+    "type":         "library",
+    "license":      "MIT",
+    "authors":      [
+        {
+            "name":      "Konstantin Kudryashov",
+            "email":     "ever.zet@gmail.com",
+            "homepage":  "http://everzet.com"
+        }
+    ],
+    "require": {
+        "php": "~5.4"
+    },
+
+    "require-dev": {
+        "phpunit/phpunit": "~4.4.0"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "Everzet\\PersistedObjects\\": "src/"
+        }
+    },
+
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}

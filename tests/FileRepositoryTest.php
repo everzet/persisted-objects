@@ -121,7 +121,7 @@ class FileRepositoryTest extends PHPUnit_Framework_TestCase
     {
         return new Everzet\PersistedObjects\FileRepository(
             $this->filename,
-            new ReflectionMethod(PersistedObject::class, 'getId')
+            new ReflectionMethod('PersistedObject', 'getId')
         );
     }
 }

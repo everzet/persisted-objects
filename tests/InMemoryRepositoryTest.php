@@ -91,7 +91,7 @@ class InMemoeryRepositoryTest extends PHPUnit_Framework_TestCase
     private function createRepository()
     {
         return new Everzet\PersistedObjects\InMemoryRepository(
-            new ReflectionMethod(InMemoryObject::class, 'getId')
+            new ReflectionMethod('InMemoryObject', 'getId')
         );
     }
 }

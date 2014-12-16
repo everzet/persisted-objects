@@ -48,6 +48,15 @@ class FileRepositoryTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($objectsToPersist[1], $repository->findById($objectId));
     }
 
+    /** @test @expectedException Exception */
+    function shouldThrowAnExceptionIfUnexpectedObjectGiven()
+    {
+        $objectToPersist = (object)[];
+        $repository = $this->createRepository();
+
+        $repository->save($objectToPersist);
+    }
+
     /** @test */ function shouldBeAbleToRemoveObject()
     {
         $objectToPersist = new PersistedObject($objectId = 42, 'everzet');

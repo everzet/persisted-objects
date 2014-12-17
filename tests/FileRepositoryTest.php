@@ -126,6 +126,29 @@ class FileRepositoryTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($newRepository->getAll(), $repository->getAll());
     }
 
+    /** @test */ function shouldBeAbleToUseCallbackAsIdentityLocator()
+    {
+        $objectToPersist = new InMemoryObject($objectId = 42, 'everzet');
+        $repository = new Everzet\PersistedObjects\FileRepository(
+            $this->filename,
+            function (InMemoryObject $object) { return $object->getId(); }
+        );
+
+        $repository->save($objectToPersist);
+
+        $this->assertEquals($objectToPersist, $repository->findById($objectId));
+    }
+
+    /** @test */ function shouldErrorWhenGivenOtherIdentityLocator()
+    {
+        $objectToPersist = new InMemoryObject($objectId = 42, 'everzet');
+        $repository = new Everzet\PersistedObjects\FileRepository($this->filename, 'bar');
+
+        $this->setExpectedException('RuntimeException');
+
+        $repository->save($objectToPersist);
+    }
+
     private function createRepository()
     {
         return new Everzet\PersistedObjects\FileRepository(

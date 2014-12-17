@@ -9,7 +9,7 @@ final class FileRepository implements Repository
     private $filename;
     private $identityAccessor;
 
-    public function __construct($filename, ReflectionMethod $identityAccessor)
+    public function __construct($filename, $identityAccessor)
     {
         $this->filename = $filename;
         $this->identityAccessor = $identityAccessor;
@@ -55,7 +55,15 @@ final class FileRepository implements Repository
 
     private function objectId($object)
     {
-        return $this->identityAccessor->invoke($object);
+        if ($this->identityAccessor instanceof \ReflectionMethod) {
+            return $this->identityAccessor->invoke($object);
+        }
+        else if (is_callable($this->identityAccessor)) {
+            return call_user_func_array($this->identityAccessor, [$object]);
+        }
+        else {
+            throw new \RuntimeException('Unable to find object identity with provided accessor');
+        }
     }
 
     private function stringify($object)

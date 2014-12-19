@@ -3,7 +3,7 @@
 namespace Everzet\PersistedObjects;
 
 
-class AccessorIdentityLocator implements IdentityLocator
+class AccessorObjectIdentifier implements ObjectIdentifier
 {
     /**
      * @var string

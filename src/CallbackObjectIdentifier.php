@@ -2,7 +2,7 @@
 
 namespace Everzet\PersistedObjects;
 
-class CallbackIdentityLocator implements IdentityLocator
+class CallbackObjectIdentifier implements ObjectIdentifier
 {
     /**
      * @var callable

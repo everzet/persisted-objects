@@ -2,24 +2,24 @@
 
 namespace IdentityAccessorTest;
 
-use Everzet\PersistedObjects\AccessorIdentityLocator;
-use Everzet\PersistedObjects\IdentityLocator;
+use Everzet\PersistedObjects\AccessorObjectIdentifier;
+use Everzet\PersistedObjects\ObjectIdentifier;
 
-class AccessorIdentityLocatorTest extends \PHPUnit_Framework_TestCase
+class AccessorObjectIdentifierTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var IdentityLocator
+     * @var ObjectIdentifier
      */
     private $accessor;
 
     function setUp()
     {
-        $this->accessor = new AccessorIdentityLocator('getId');
+        $this->accessor = new AccessorObjectIdentifier('getId');
     }
 
     /** @test */ function shouldBeAnIdentityAccessor()
     {
-        $this->assertInstanceOf('Everzet\PersistedObjects\IdentityLocator', $this->accessor);
+        $this->assertInstanceOf('Everzet\PersistedObjects\ObjectIdentifier', $this->accessor);
     }
 
     /** @test */ function shouldReturnTheRightCallback()
@@ -33,7 +33,7 @@ class AccessorIdentityLocatorTest extends \PHPUnit_Framework_TestCase
 
     /** @test @expectedException Exception */ function shouldThrowIfMethodDoesNotExist()
     {
-        $this->accessor = new AccessorIdentityLocator('getOtherId', 'specificObject');
+        $this->accessor = new AccessorObjectIdentifier('getOtherId', 'specificObject');
 
         $obj = $this->getMock('IdentityAccessorTest\AccessorIdentifiedObject');
 

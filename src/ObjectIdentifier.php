@@ -2,7 +2,7 @@
 
 namespace Everzet\PersistedObjects;
 
-interface IdentityLocator
+interface ObjectIdentifier
 {
     public function getIdentity($obj);
 }

@@ -1,6 +1,6 @@
 <?php
 
-use Everzet\PersistedObjects\AccessorIdentityLocator;
+use Everzet\PersistedObjects\AccessorObjectIdentifier;
 
 class InMemoryRepositoryTest extends PHPUnit_Framework_TestCase
 {
@@ -92,7 +92,7 @@ class InMemoryRepositoryTest extends PHPUnit_Framework_TestCase
     private function createRepository()
     {
         return new Everzet\PersistedObjects\InMemoryRepository(
-            new AccessorIdentityLocator('getId')
+            new AccessorObjectIdentifier('getId')
         );
     }
 }

@@ -7,7 +7,7 @@ final class InMemoryRepository implements Repository
     private $identityLocator;
     private $storage = [];
 
-    public function __construct(IdentityLocator $identityLocator)
+    public function __construct(ObjectIdentifier $identityLocator)
     {
         $this->identityLocator = $identityLocator;
     }

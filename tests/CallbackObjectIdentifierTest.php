@@ -2,13 +2,13 @@
 
 namespace IdentityAccessorTest;
 
-use Everzet\PersistedObjects\IdentityLocator;
-use Everzet\PersistedObjects\CallbackIdentityLocator;
+use Everzet\PersistedObjects\ObjectIdentifier;
+use Everzet\PersistedObjects\CallbackObjectIdentifier;
 
 class CallbackIdentityLocatorTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var IdentityLocator
+     * @var ObjectIdentifier
      */
     private $accessor;
 
@@ -17,13 +17,13 @@ class CallbackIdentityLocatorTest extends \PHPUnit_Framework_TestCase
         $callback = function ($obj) {
             return 1234;
         };
-        $this->accessor = new CallbackIdentityLocator($callback);
+        $this->accessor = new CallbackObjectIdentifier($callback);
     }
 
     /** @test */
     function shouldBeAnIdentityAccessor()
     {
-        $this->assertInstanceOf('Everzet\PersistedObjects\IdentityLocator', $this->accessor);
+        $this->assertInstanceOf('Everzet\PersistedObjects\ObjectIdentifier', $this->accessor);
     }
 
     /** @test */

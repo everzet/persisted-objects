@@ -9,7 +9,7 @@ final class FileRepository implements Repository
     private $filename;
     private $identityLocator;
 
-    public function __construct($filename, IdentityLocator $identityLocator)
+    public function __construct($filename, ObjectIdentifier $identityLocator)
     {
         $this->filename = $filename;
         $this->identityLocator = $identityLocator;

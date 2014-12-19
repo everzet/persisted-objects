@@ -4,23 +4,23 @@ namespace Everzet\PersistedObjects;
 
 final class InMemoryRepository implements Repository
 {
-    private $identityLocator;
+    private $identifier;
     private $storage = [];
 
-    public function __construct(ObjectIdentifier $identityLocator)
+    public function __construct(ObjectIdentifier $identifier)
     {
-        $this->identityLocator = $identityLocator;
+        $this->identifier = $identifier;
     }
 
     public function save($object)
     {
-        $id = $this->stringify($this->objectId($object));
+        $id = $this->stringify($this->getIdentity($object));
         $this->storage[$id] = $object;
     }
 
     public function remove($object)
     {
-        $id = $this->stringify($this->objectId($object));
+        $id = $this->stringify($this->getIdentity($object));
         unset($this->storage[$id]);
     }
 
@@ -45,9 +45,9 @@ final class InMemoryRepository implements Repository
         $this->storage = [];
     }
 
-    private function objectId($object)
+    private function getIdentity($object)
     {
-        return $this->identityLocator->getIdentity($object);
+        return $this->identifier->getIdentity($object);
     }
 
     private function stringify($object)

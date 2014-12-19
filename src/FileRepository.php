@@ -7,17 +7,17 @@ use ReflectionMethod;
 final class FileRepository implements Repository
 {
     private $filename;
-    private $identityLocator;
+    private $identifier;
 
-    public function __construct($filename, ObjectIdentifier $identityLocator)
+    public function __construct($filename, ObjectIdentifier $identifier)
     {
         $this->filename = $filename;
-        $this->identityLocator = $identityLocator;
+        $this->identifier = $identifier;
     }
 
     public function save($object)
     {
-        $id = $this->stringify($this->objectId($object));
+        $id = $this->stringify($this->getIdentity($object));
         $db = $this->loadDb();
         $db[$id] = $object;
         $this->saveDb($db);
@@ -25,7 +25,7 @@ final class FileRepository implements Repository
 
     public function remove($object)
     {
-        $id = $this->stringify($this->objectId($object));
+        $id = $this->stringify($this->getIdentity($object));
         $db = $this->loadDb();
         unset($db[$id]);
         $this->saveDb($db);
@@ -53,9 +53,9 @@ final class FileRepository implements Repository
         $this->saveDb([]);
     }
 
-    private function objectId($object)
+    private function getIdentity($object)
     {
-        return $this->identityLocator->getIdentity($object);
+        return $this->identifier->getIdentity($object);
     }
 
     private function stringify($object)

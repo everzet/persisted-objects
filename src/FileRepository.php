@@ -2,8 +2,6 @@
 
 namespace Everzet\PersistedObjects;
 
-use ReflectionMethod;
-
 final class FileRepository implements Repository
 {
     private $filename;

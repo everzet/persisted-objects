@@ -2,12 +2,8 @@
 
 namespace Everzet\PersistedObjects;
 
-
 class AccessorObjectIdentifier implements ObjectIdentifier
 {
-    /**
-     * @var string
-     */
     private $accessor;
 
     public function __construct($accessor)

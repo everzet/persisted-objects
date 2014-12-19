@@ -4,9 +4,6 @@ namespace Everzet\PersistedObjects;
 
 class CallbackObjectIdentifier implements ObjectIdentifier
 {
-    /**
-     * @var callable
-     */
     private $callable;
 
     public function __construct(callable $callable)

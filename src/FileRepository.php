@@ -6,6 +6,7 @@ final class FileRepository implements Repository
 {
     private $filename;
     private $identifier;
+    private $cache;
 
     public function __construct($filename, ObjectIdentifier $identifier)
     {
@@ -63,13 +64,18 @@ final class FileRepository implements Repository
 
     private function loadDb()
     {
-        return file_exists($this->filename)
-            ? unserialize(file_get_contents($this->filename))
-            : [];
+        if (null === $this->cache) {
+            $this->cache = file_exists($this->filename)
+                ? unserialize(file_get_contents($this->filename))
+                : [];
+        }
+
+        return $this->cache;
     }
 
     private function saveDb(array $collection)
     {
         file_put_contents($this->filename, serialize($collection));
+        $this->cache = null;
     }
 }

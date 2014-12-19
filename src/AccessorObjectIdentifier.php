@@ -11,12 +11,12 @@ final class AccessorObjectIdentifier implements ObjectIdentifier
         $this->accessor = $accessor;
     }
 
-    public function getIdentity($obj)
+    public function getIdentity($object)
     {
-        if (!method_exists($obj, $this->accessor)) {
-            throw new \RuntimeException(sprintf('Object of type %s does not have accessor %s', get_class($obj), $this->accessor));
+        if (!method_exists($object, $this->accessor)) {
+            throw new \RuntimeException(sprintf('Object of type %s does not have accessor %s', get_class($object), $this->accessor));
         }
 
-        return $obj->{$this->accessor}();
+        return $object->{$this->accessor}();
     }
 }

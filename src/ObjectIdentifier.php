@@ -4,5 +4,5 @@ namespace Everzet\PersistedObjects;
 
 interface ObjectIdentifier
 {
-    public function getIdentity($obj);
+    public function getIdentity($object);
 }

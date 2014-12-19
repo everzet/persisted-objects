@@ -11,8 +11,8 @@ final class CallbackObjectIdentifier implements ObjectIdentifier
         $this->callable = $callable;
     }
 
-    public function getIdentity($obj)
+    public function getIdentity($object)
     {
-        return call_user_func($this->callable, $obj);
+        return call_user_func($this->callable, $object);
     }
 }

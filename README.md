@@ -39,7 +39,7 @@ $repo = new InMemoryRepository(new CallbackObjectIdentifier(
 );
 $repo->save($user);
 
-$user === $repo->findById($user->getId());
+$user === $repo->findById($user->getFirstname() . $user->getLastname());
 
 $repo->clear();
 ```

@@ -2,7 +2,7 @@
 
 namespace Everzet\PersistedObjects;
 
-class CallbackObjectIdentifier implements ObjectIdentifier
+final class CallbackObjectIdentifier implements ObjectIdentifier
 {
     private $callable;
 

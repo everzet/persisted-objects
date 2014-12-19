@@ -2,7 +2,7 @@
 
 namespace Everzet\PersistedObjects;
 
-class AccessorObjectIdentifier implements ObjectIdentifier
+final class AccessorObjectIdentifier implements ObjectIdentifier
 {
     private $accessor;
 

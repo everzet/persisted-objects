@@ -52,6 +52,6 @@ final class InMemoryRepository implements Repository
 
     private function stringify($object)
     {
-        return md5(var_export($object, true));
+        return md5(serialize($object));
     }
 }

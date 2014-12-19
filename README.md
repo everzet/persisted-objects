@@ -14,7 +14,7 @@ $> composer require everzet/persisted-objects
 
 Use like this:
 
-```
+```php
 $repo = new FileRepository(TEMP_FILE, new AccessorObjectIdentifier('getId'));
 $repo->save($user);
 
@@ -26,7 +26,7 @@ $repo->clear();
 or like this:
 
 
-```
+```php
 $repo = new InMemoryRepository(new CallbackObjectIdentifier(
     function($obj) { return $obj->getFirstname() . $obj->getLastname(); }
 );

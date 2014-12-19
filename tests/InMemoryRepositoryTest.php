@@ -1,8 +1,9 @@
 <?php
 
-class InMemoeryRepositoryTest extends PHPUnit_Framework_TestCase
+use Everzet\PersistedObjects\AccessorObjectIdentifier;
+
+class InMemoryRepositoryTest extends PHPUnit_Framework_TestCase
 {
-    private $filename;
 
     /** @test */ function shouldBeAbleToSaveAndRetrieveObjectLater()
     {
@@ -36,15 +37,6 @@ class InMemoeryRepositoryTest extends PHPUnit_Framework_TestCase
         $repository->save($objectsToPersist[1]);
 
         $this->assertEquals($objectsToPersist[1], $repository->findById($objectId));
-    }
-
-    /** @test @expectedException Exception */
-    function shouldThrowAnExceptionIfUnexpectedObjectGiven()
-    {
-        $objectToPersist = (object)[];
-        $repository = $this->createRepository();
-
-        $repository->save($objectToPersist);
     }
 
     /** @test */ function shouldBeAbleToRemoveObject()
@@ -100,7 +92,7 @@ class InMemoeryRepositoryTest extends PHPUnit_Framework_TestCase
     private function createRepository()
     {
         return new Everzet\PersistedObjects\InMemoryRepository(
-            new ReflectionMethod('InMemoryObject', 'getId')
+            new AccessorObjectIdentifier('getId')
         );
     }
 }

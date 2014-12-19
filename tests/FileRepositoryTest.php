@@ -1,5 +1,7 @@
 <?php
 
+use Everzet\PersistedObjects\AccessorObjectIdentifier;
+
 class FileRepositoryTest extends PHPUnit_Framework_TestCase
 {
     private $filename;
@@ -130,7 +132,7 @@ class FileRepositoryTest extends PHPUnit_Framework_TestCase
     {
         return new Everzet\PersistedObjects\FileRepository(
             $this->filename,
-            new ReflectionMethod('PersistedObject', 'getId')
+            new AccessorObjectIdentifier('getId')
         );
     }
 }

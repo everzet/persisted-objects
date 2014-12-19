@@ -7,12 +7,12 @@ use ReflectionMethod;
 final class FileRepository implements Repository
 {
     private $filename;
-    private $identityAccessor;
+    private $identityLocator;
 
-    public function __construct($filename, ReflectionMethod $identityAccessor)
+    public function __construct($filename, ObjectIdentifier $identityLocator)
     {
         $this->filename = $filename;
-        $this->identityAccessor = $identityAccessor;
+        $this->identityLocator = $identityLocator;
     }
 
     public function save($object)
@@ -55,7 +55,7 @@ final class FileRepository implements Repository
 
     private function objectId($object)
     {
-        return $this->identityAccessor->invoke($object);
+        return $this->identityLocator->getIdentity($object);
     }
 
     private function stringify($object)

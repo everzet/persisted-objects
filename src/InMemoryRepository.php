@@ -2,16 +2,14 @@
 
 namespace Everzet\PersistedObjects;
 
-use ReflectionMethod;
-
 final class InMemoryRepository implements Repository
 {
-    private $identityAccessor;
+    private $identityLocator;
     private $storage = [];
 
-    public function __construct(ReflectionMethod $identityAccessor)
+    public function __construct(ObjectIdentifier $identityLocator)
     {
-        $this->identityAccessor = $identityAccessor;
+        $this->identityLocator = $identityLocator;
     }
 
     public function save($object)
@@ -49,7 +47,7 @@ final class InMemoryRepository implements Repository
 
     private function objectId($object)
     {
-        return $this->identityAccessor->invoke($object);
+        return $this->identityLocator->getIdentity($object);
     }
 
     private function stringify($object)

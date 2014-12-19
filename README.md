@@ -7,7 +7,7 @@ in the test infrastructure.
 ### Why?
 
 As stated in the header - for testing and demo purposes. These repos are optimised for cases where
-you have less than 30 records in your repository and there's always only one user accessing it at
+you have less than 20 records in your repository and there's always only one user accessing it at
 a time. In these particular cases these repositories are faster. But in every other instance
 they're exponentially not.
 

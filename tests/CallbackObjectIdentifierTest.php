@@ -5,7 +5,7 @@ namespace IdentityAccessorTest;
 use Everzet\PersistedObjects\ObjectIdentifier;
 use Everzet\PersistedObjects\CallbackObjectIdentifier;
 
-class CallbackIdentityLocatorTest extends \PHPUnit_Framework_TestCase
+class CallbackObjectIdentifierTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var ObjectIdentifier

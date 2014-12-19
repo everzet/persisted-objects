@@ -15,7 +15,7 @@ $> composer require everzet/persisted-objects
 Use like this:
 
 ```
-$repo = new FileRepository(TEMP_FILE, new ReflectionMethod(YourEntity::class, 'getId'));
+$repo = new FileRepository(TEMP_FILE, new AccessorIdentityLocator('getId'));
 $repo->save($user);
 
 $user === $repo->findById($user->getId());

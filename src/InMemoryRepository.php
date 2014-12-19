@@ -4,12 +4,12 @@ namespace Everzet\PersistedObjects;
 
 final class InMemoryRepository implements Repository
 {
-    private $identityAccessor;
+    private $identityLocator;
     private $storage = [];
 
-    public function __construct($identityAccessor)
+    public function __construct(IdentityLocator $identityLocator)
     {
-        $this->identityAccessor = $identityAccessor;
+        $this->identityLocator = $identityLocator;
     }
 
     public function save($object)
@@ -47,15 +47,7 @@ final class InMemoryRepository implements Repository
 
     private function objectId($object)
     {
-        if ($this->identityAccessor instanceof \ReflectionMethod) {
-            return $this->identityAccessor->invoke($object);
-        }
-        else if (is_callable($this->identityAccessor)) {
-            return call_user_func_array($this->identityAccessor, [$object]);
-        }
-        else {
-            throw new \RuntimeException('Unable to find object identity with provided accessor');
-        }
+        return $this->identityLocator->getIdentity($object);
     }
 
     private function stringify($object)

@@ -2,7 +2,7 @@
 
 namespace Everzet\PersistedObjects;
 
-final class FileRepository implements Repository
+class FileRepository implements Repository
 {
     private $filename;
     private $identifier;

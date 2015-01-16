@@ -2,7 +2,7 @@
 
 namespace Everzet\PersistedObjects;
 
-final class InMemoryRepository implements Repository
+class InMemoryRepository implements Repository
 {
     private $identifier;
     private $storage = [];

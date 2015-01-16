@@ -16,7 +16,7 @@ they're exponentially not.
 Install with:
 
 ```
-$> composer require everzet/persisted-objects
+$> composer require --dev everzet/persisted-objects
 ```
 
 Use like this:

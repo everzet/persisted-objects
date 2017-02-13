@@ -5,7 +5,7 @@ namespace Everzet\PersistedObjects;
 final class InMemoryRepository implements Repository
 {
     private $identifier;
-    private $storage = [];
+    private $storage = array();
 
     public function __construct(ObjectIdentifier $identifier)
     {
@@ -42,7 +42,7 @@ final class InMemoryRepository implements Repository
 
     public function clear()
     {
-        $this->storage = [];
+        $this->storage = array();
     }
 
     private function getIdentity($object)

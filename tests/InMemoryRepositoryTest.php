@@ -27,10 +27,10 @@ class InMemoryRepositoryTest extends PHPUnit_Framework_TestCase
 
     /** @test */ function shouldOverrideObjectsWithTheSameId()
     {
-        $objectsToPersist = [
+        $objectsToPersist = array(
             new InMemoryObject($objectId = 42, 'everzet'),
             new InMemoryObject($objectId, 'marcello')
-        ];
+        );
         $repository = $this->createRepository();
 
         $repository->save($objectsToPersist[0]);
@@ -57,15 +57,15 @@ class InMemoryRepositoryTest extends PHPUnit_Framework_TestCase
 
         $repository->remove($objectToPersist);
 
-        $this->assertEquals([], $repository->getAll());
+        $this->assertEquals(array(), $repository->getAll());
     }
 
     /** @test */ function shouldBeAbleToGetAllObjects()
     {
-        $objectsToPersist = [
+        $objectsToPersist = array(
             new InMemoryObject(42, 'everzet'),
             new InMemoryObject(24, 'marcello')
-        ];
+        );
         $repository = $this->createRepository();
 
         $repository->save($objectsToPersist[0]);
@@ -76,17 +76,17 @@ class InMemoryRepositoryTest extends PHPUnit_Framework_TestCase
 
     /** @test */ function shouldBeAbleToClearRepository()
     {
-        $objectsToPersist = [
+        $objectsToPersist = array(
             new InMemoryObject(42, 'everzet'),
             new InMemoryObject(24, 'marcello')
-        ];
+        );
         $repository = $this->createRepository();
 
         $repository->save($objectsToPersist[0]);
         $repository->save($objectsToPersist[1]);
         $repository->clear();
 
-        $this->assertEquals([], $repository->getAll());
+        $this->assertEquals(array(), $repository->getAll());
     }
 
     private function createRepository()

@@ -38,10 +38,10 @@ class FileRepositoryTest extends PHPUnit_Framework_TestCase
 
     /** @test */ function shouldOverrideObjectsWithTheSameId()
     {
-        $objectsToPersist = [
+        $objectsToPersist = array(
             new PersistedObject($objectId = 42, 'everzet'),
             new PersistedObject($objectId, 'marcello')
-        ];
+        );
         $repository = $this->createRepository();
 
         $repository->save($objectsToPersist[0]);
@@ -53,7 +53,7 @@ class FileRepositoryTest extends PHPUnit_Framework_TestCase
     /** @test @expectedException Exception */
     function shouldThrowAnExceptionIfUnexpectedObjectGiven()
     {
-        $objectToPersist = (object)[];
+        $objectToPersist = (object) array();
         $repository = $this->createRepository();
 
         $repository->save($objectToPersist);
@@ -77,15 +77,15 @@ class FileRepositoryTest extends PHPUnit_Framework_TestCase
 
         $repository->remove($objectToPersist);
 
-        $this->assertEquals([], $repository->getAll());
+        $this->assertEquals(array(), $repository->getAll());
     }
 
     /** @test */ function shouldBeAbleToGetAllObjects()
     {
-        $objectsToPersist = [
+        $objectsToPersist = array(
             new PersistedObject(42, 'everzet'),
             new PersistedObject(24, 'marcello')
-        ];
+        );
         $repository = $this->createRepository();
 
         $repository->save($objectsToPersist[0]);
@@ -98,10 +98,10 @@ class FileRepositoryTest extends PHPUnit_Framework_TestCase
 
     /** @test */ function shouldPersistObjectsBetweenInstances()
     {
-        $objectsToPersist = [
+        $objectsToPersist = array(
             new PersistedObject(42, 'everzet'),
             new PersistedObject(24, 'marcello')
-        ];
+        );
         $repository = $this->createRepository();
         $newRepository = $this->createRepository();
 
@@ -113,10 +113,10 @@ class FileRepositoryTest extends PHPUnit_Framework_TestCase
 
     /** @test */ function shouldBeAbleToClearRepository()
     {
-        $objectsToPersist = [
+        $objectsToPersist = array(
             new PersistedObject(42, 'everzet'),
             new PersistedObject(24, 'marcello')
-        ];
+        );
         $repository = $this->createRepository();
         $newRepository = $this->createRepository();
 
@@ -124,7 +124,7 @@ class FileRepositoryTest extends PHPUnit_Framework_TestCase
         $repository->save($objectsToPersist[1]);
         $repository->clear();
 
-        $this->assertEquals([], $repository->getAll());
+        $this->assertEquals(array(), $repository->getAll());
         $this->assertEquals($newRepository->getAll(), $repository->getAll());
     }
 

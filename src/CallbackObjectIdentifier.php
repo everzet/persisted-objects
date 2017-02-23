@@ -6,7 +6,7 @@ final class CallbackObjectIdentifier implements ObjectIdentifier
 {
     private $callable;
 
-    public function __construct(callable $callable)
+    public function __construct($callable)
     {
         $this->callable = $callable;
     }

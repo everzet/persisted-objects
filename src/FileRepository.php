@@ -49,7 +49,7 @@ final class FileRepository implements Repository
 
     public function clear()
     {
-        $this->saveDb([]);
+        $this->saveDb(array());
     }
 
     private function getIdentity($object)
@@ -67,7 +67,7 @@ final class FileRepository implements Repository
         if (null === $this->cache) {
             $this->cache = file_exists($this->filename)
                 ? unserialize(file_get_contents($this->filename))
-                : [];
+                : array();
         }
 
         return $this->cache;

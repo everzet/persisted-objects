@@ -32,6 +32,19 @@ $repo->clear();
 
 or like this:
 
+```php
+$repo = new InMemoryRepository(new AccessorObjectIdentifier('getId'));
+$repo->save($user);
+
+$user === $repo->findById($user->getId());
+
+$repo->clear();
+```
+
+
+#### Custom callback for identifiers
+
+Should you need a custom way to create an identifier — you may have a compound key, universally unique identifiers, or any more complex id generation strategy you can use the `CallbackObjectIdentifier`:
 
 ```php
 $repo = new InMemoryRepository(new CallbackObjectIdentifier(

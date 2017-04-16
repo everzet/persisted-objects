@@ -16,12 +16,15 @@ they're exponentially not.
 Install with:
 
 ```
-$> composer require --dev everzet/persisted-objects
+$> composer require everzet/persisted-objects
 ```
 
 Use like this:
 
 ```php
+use Everzet\PersistedObjects\AccessorObjectIdentifier;
+use Everzet\PersistedObjects\FileRepository;
+
 $repo = new FileRepository(TEMP_FILE, new AccessorObjectIdentifier('getId'));
 $repo->save($user);
 
@@ -34,6 +37,9 @@ or like this:
 
 
 ```php
+use Everzet\PersistedObjects\CallbackObjectIdentifier;
+use Everzet\PersistedObjects\InMemoryRepository;
+
 $repo = new InMemoryRepository(new CallbackObjectIdentifier(
     function($obj) { return $obj->getFirstname() . $obj->getLastname(); }
 );
